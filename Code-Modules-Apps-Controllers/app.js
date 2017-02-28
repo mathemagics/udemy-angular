@@ -5,10 +5,11 @@ var angularApp = angular.module('myApp', []);
 // CONTROLLERS
 angularApp.controller('mainController', [
   '$scope',
-  '$timeout',
-  function ($scope, $timeout) {
-    $scope.name= 'Paul';
-    $timeout(function() {
-       $scope.name = 'Everyone';
-    }, 3000)
+  '$filter',
+  function ($scope, $filter) {
+    $scope.handle = '';
+    $scope.characters = 5
+    $scope.lowercasehandle = function() {
+      return $filter('lowercase')($scope.handle)
+    }
 }]);
